@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const path = require('path');
-var fs = require('fs');
+const fs = require('fs');
 
 const config = {
   mode: 'development',
@@ -25,7 +25,7 @@ const config = {
     ],
   },
   plugins: [
-    new Dotenv()
+    new Dotenv(),
   ],
   target: 'node',
 };

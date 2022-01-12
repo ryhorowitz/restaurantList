@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import {
   GoogleMap, useLoadScript, Marker, InfoWindow,
 } from '@react-google-maps/api';
@@ -20,7 +20,7 @@ const options = {
   styles: mapStyles,
   disableDefaultUI: true,
   zoomControl: true,
-}
+};
 
 function Map() {
   const { isLoaded, loadError } = useLoadScript({
@@ -29,7 +29,22 @@ function Map() {
     libraries,
     version: 'weekly',
   });
-  const [markers, useMarkers] = useState([]);
+  const [markers, setMarkers] = useState([]);
+
+  const onMapClick = useCallback((e) => {
+    setMarkers((current) => [
+      ...current, {
+        lat: e.latLng.lat(),
+        lng: e.latLng.lng(),
+        time: new Date(),
+      },
+    ]);
+  }, []);
+
+  const mapRef = useRef();
+  const onMapLoad = useCallback((map) => {
+    mapRef.current = map;
+  }, []);
 
   if (loadError) return 'Error';
   if (!isLoaded) return 'Loading...';
@@ -41,11 +56,20 @@ function Map() {
         zoom={14}
         center={center}
         options={options}
-        onClick={(e) => {
-          console.log(e.latLng.lat());
-          console.log(e.latLng.lng());
-        }}
-      />
+        onClick={onMapClick}
+        onLoad={onMapLoad}
+      >
+        {markers.map((marker) => (
+          <Marker
+            key={marker.time.toISOString()}
+            position={{
+              lat: marker.lat,
+              lng: marker.lng,
+            }}
+            z-index={2}
+          />
+        ))}
+      </GoogleMap>
     </div>
   );
 }

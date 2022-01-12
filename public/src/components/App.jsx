@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import styled from 'styled-components';
+// eslint-disable-next-line import/extensions
 import Map from './Map/Map.jsx';
 
 function App() {

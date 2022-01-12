@@ -2,57 +2,57 @@
 
 export default [
   {
-    "featureType": "all",
-    "elementType": "labels.text",
-    "stylers": [
+    featureType: 'all',
+    elementType: 'labels.text',
+    stylers: [
       {
-        "color": "#878787"
-      }
-    ]
+        color: '#878787',
+      },
+    ],
   },
   {
-    "featureType": "all",
-    "elementType": "labels.text.stroke",
-    "stylers": [
+    featureType: 'all',
+    elementType: 'labels.text.stroke',
+    stylers: [
       {
-        "visibility": "off"
-      }
-    ]
+        visibility: 'off',
+      },
+    ],
   },
   {
-    "featureType": "landscape",
-    "elementType": "all",
-    "stylers": [
+    featureType: 'landscape',
+    elementType: 'all',
+    stylers: [
       {
-        "color": "#f9f5ed"
-      }
-    ]
+        color: '#f9f5ed',
+      },
+    ],
   },
   {
-    "featureType": "road.highway",
-    "elementType": "all",
-    "stylers": [
+    featureType: 'road.highway',
+    elementType: 'all',
+    stylers: [
       {
-        "color": "#f5f5f5"
-      }
-    ]
+        color: '#f5f5f5',
+      },
+    ],
   },
   {
-    "featureType": "road.highway",
-    "elementType": "geometry.stroke",
-    "stylers": [
+    featureType: 'road.highway',
+    elementType: 'geometry.stroke',
+    stylers: [
       {
-        "color": "#c9c9c9"
-      }
-    ]
+        color: '#c9c9c9',
+      },
+    ],
   },
   {
-    "featureType": "water",
-    "elementType": "all",
-    "stylers": [
+    featureType: 'water',
+    elementType: 'all',
+    stylers: [
       {
-        "color": "#aee0f4"
-      }
-    ]
-  }
+        color: '#aee0f4',
+      },
+    ],
+  },
 ];
