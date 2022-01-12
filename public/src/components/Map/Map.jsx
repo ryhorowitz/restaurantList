@@ -29,6 +29,8 @@ function Map() {
     libraries,
     version: 'weekly',
   });
+  const [markers, useMarkers] = useState([]);
+
   if (loadError) return 'Error';
   if (!isLoaded) return 'Loading...';
 
@@ -36,9 +38,13 @@ function Map() {
     <div>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={8}
+        zoom={14}
         center={center}
         options={options}
+        onClick={(e) => {
+          console.log(e.latLng.lat());
+          console.log(e.latLng.lng());
+        }}
       />
     </div>
   );
