@@ -36,7 +36,7 @@ function Map() {
       ...current, {
         lat: e.latLng.lat(),
         lng: e.latLng.lng(),
-        time: new Date(),
+        time: new Date().toISOString(),
       },
     ]);
   }, []);
@@ -61,7 +61,7 @@ function Map() {
       >
         {markers.map((marker) => (
           <Marker
-            key={marker.time.toISOString()}
+            key={marker.time}
             position={{
               lat: marker.lat,
               lng: marker.lng,
