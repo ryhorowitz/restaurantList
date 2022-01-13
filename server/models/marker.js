@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
-const markerSchema = require('../schemata/marker');
 
-const Marker = mongoose.model('test', markerSchema);
+const { Schema } = mongoose;
+
+const MarkerSchema = new Schema({
+  lat: Number,
+  lng: Number,
+  timePlaced: String,
+});
+const Marker = mongoose.model('test', MarkerSchema);
 
 module.exports = Marker;

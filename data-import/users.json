@@ -1,0 +1,14 @@
+[
+  {
+    "_id": 1,
+    "username": "ryWitz",
+    "password": "poopDollar",
+    "signedUp": "Wed Jan 12 2022 21: 33: 40 GMT-0500 (Eastern Standard Time)"
+  },
+  {
+    "_id": 2,
+    "username": "Bigred",
+    "password": "dumDollar",
+    "signedUp": "Wed Jan 12 2022 20: 23: 40 GMT-0500 (Eastern Standard Time)"
+  }
+]
