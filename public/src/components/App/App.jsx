@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import styled from 'styled-components';
@@ -5,6 +6,7 @@ import styled from 'styled-components';
 import css from './appStyles.css';
 
 import Map from '../Map/Map.jsx';
+import List from '../List/List.jsx';
 
 function App() {
   return (
@@ -13,11 +15,8 @@ function App() {
       <div className="columnContainer">
         <div className="leftContainer" />
         <div className="middleContainer">
-          <div className="app">
-            <div>I&apos;m in React App.jsx</div>
-            <Map />
-          </div>
-
+          <Map />
+          <List />
         </div>
         <div className="rightContainer" />
       </div>

@@ -27,6 +27,6 @@
 .middleContainer {
     flex: 4;
     margin: 10px;
-    background-color: black;
+    background-color: rgb(92, 92, 92);
     height: 95%;
 }
