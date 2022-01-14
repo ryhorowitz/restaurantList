@@ -12,7 +12,7 @@ import List from '../List/List.jsx';
 function initList(setRestaurants) {
   axios.get('http://localhost:3000/markers')
     .then((response) => {
-      console.log('res data is \n', response.data);
+      // console.log('res data is \n', response.data);
       setRestaurants(response.data);
     })
     .catch((err) => {
@@ -29,12 +29,11 @@ function App() {
 
   return (
     <div className="container">
-
       <div className="columnContainer">
         <div className="leftContainer" />
         <div className="middleContainer">
-          <Map />
-          <List restaurants={restaurants} rows={restaurants.length} />
+          {restaurants.length && <Map savedMarkers={restaurants} />}
+          {restaurants.length && <List restaurants={restaurants} />}
         </div>
         <div className="rightContainer" />
       </div>

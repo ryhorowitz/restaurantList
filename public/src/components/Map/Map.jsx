@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useMemo } from 'react';
 import {
   GoogleMap, useLoadScript, Marker, InfoWindow,
 } from '@react-google-maps/api';
@@ -25,14 +25,16 @@ const options = {
   zoomControl: true,
 };
 
-function Map() {
+function Map({ savedMarkers }) {
   const { isLoaded, loadError } = useLoadScript({
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
     version: 'weekly',
   });
-  const [markers, setMarkers] = useState([]);
+  console.log('savedMArkrs', savedMarkers);
+  const [markers, setMarkers] = useState([...savedMarkers]);
+
 
   const onMapClick = useCallback((e) => {
     setMarkers((current) => [
@@ -44,10 +46,10 @@ function Map() {
     ]);
   }, []);
 
-  const mapRef = useRef();
-  const onMapLoad = useCallback((map) => {
-    mapRef.current = map;
-  }, []);
+  // const mapRef = useRef();
+  // const onMapLoad = useCallback((map) => {
+  //   mapRef.current = map;
+  // }, []);
 
   if (loadError) return 'Error';
   if (!isLoaded) return 'Loading...';
@@ -60,7 +62,7 @@ function Map() {
         center={center}
         options={options}
         onClick={onMapClick}
-        onLoad={onMapLoad}
+        // onLoad={onMapLoad}
       >
         {markers.map((marker) => (
           <Marker
@@ -78,3 +80,7 @@ function Map() {
 }
 
 export default Map;
+
+
+
+//on map load add markers in state to the map.
