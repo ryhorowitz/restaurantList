@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Marker = require('../models/marker');
+const Marker = require('../server/models/marker');
 
 mongoose
     .connect('mongodb://127.0.0.1:27017/rList?directConnection=true&serverSelectionTimeoutMS=2000', { useNewUrlParser: true })
