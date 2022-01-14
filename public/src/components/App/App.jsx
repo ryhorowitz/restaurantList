@@ -27,12 +27,18 @@ function App() {
     initList(setRestaurants);
   }, []);
 
+  // useEffect(() => {
+  //   (setRestaurants);
+  // }, []);
+
   return (
     <div className="container">
       <div className="columnContainer">
         <div className="leftContainer" />
         <div className="middleContainer">
-          {restaurants.length && <Map savedMarkers={restaurants} />}
+          {restaurants.length && <Map restaurants={restaurants} setRestaurants={setRestaurants} />}
+          <br />
+          <div> Your Restaurant List </div>
           {restaurants.length && <List restaurants={restaurants} />}
         </div>
         <div className="rightContainer" />
@@ -42,4 +48,3 @@ function App() {
 }
 
 export default App;
-

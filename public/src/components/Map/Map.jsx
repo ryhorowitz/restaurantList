@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useCallback, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import {
   GoogleMap, useLoadScript, Marker, InfoWindow,
 } from '@react-google-maps/api';
@@ -25,26 +25,29 @@ const options = {
   zoomControl: true,
 };
 
-function Map({ savedMarkers }) {
+function Map({ restaurants, setRestaurants }) {
   const { isLoaded, loadError } = useLoadScript({
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
     version: 'weekly',
   });
-  console.log('savedMArkrs', savedMarkers);
-  const [markers, setMarkers] = useState([...savedMarkers]);
 
+  const [markers, setMarkers] = useState(restaurants);
+
+  useEffect(() => {
+    setMarkers(restaurants);
+  }, [restaurants]);
 
   const onMapClick = useCallback((e) => {
-    setMarkers((current) => [
+    setRestaurants((current) => [
       ...current, {
         lat: e.latLng.lat(),
         lng: e.latLng.lng(),
         time: new Date().toISOString(),
       },
     ]);
-  }, []);
+  }, [setRestaurants]);
 
   // const mapRef = useRef();
   // const onMapLoad = useCallback((map) => {
