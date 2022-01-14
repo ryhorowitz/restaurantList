@@ -1,5 +1,3 @@
-const path = require('path');
-const { Seeder } = require('mongo-seeding');
 const mongoose = require('mongoose');
 const User = require('../models/user');
 

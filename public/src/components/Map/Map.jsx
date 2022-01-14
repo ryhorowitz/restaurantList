@@ -3,13 +3,16 @@ import React, { useState, useCallback, useRef } from 'react';
 import {
   GoogleMap, useLoadScript, Marker, InfoWindow,
 } from '@react-google-maps/api';
-import styled from 'styled-components';
 import mapStyles from './mapStyles';
 
 const libraries = ['places'];
 const mapContainerStyle = {
-  height: '480px',
-  width: '480px',
+  height: '50vh',
+  width: '90%',
+  top: '5%',
+  left: '5%',
+  position: 'RELATIVE',
+  overflow: 'hidden',
 };
 const center = {
   lat: 39.952583,

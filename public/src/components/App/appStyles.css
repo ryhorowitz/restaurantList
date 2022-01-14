@@ -1,0 +1,32 @@
+.container {
+    height: 90vh;
+    margin: 5px;
+    padding: 5px;
+}
+
+.columnContainer {
+    display: flex;
+    height: 100%;
+    background-color: slategray;
+}
+
+.leftContainer {
+    height: 95%;
+    flex: 1;
+    margin: 10px;
+    background-color: black;
+}
+
+.rightContainer {
+    flex: 1;
+    margin: 10px;
+    background-color: black;
+    height: 95%;
+}
+
+.middleContainer {
+    flex: 4;
+    margin: 10px;
+    background-color: black;
+    height: 95%;
+}
