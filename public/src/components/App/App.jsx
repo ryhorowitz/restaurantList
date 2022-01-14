@@ -34,7 +34,7 @@ function App() {
         <div className="leftContainer" />
         <div className="middleContainer">
           <Map />
-          <List />
+          <List restaurants={restaurants} rows={restaurants.length} />
         </div>
         <div className="rightContainer" />
       </div>

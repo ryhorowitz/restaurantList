@@ -1,9 +1,13 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { useTable } from 'react-table';
+import { PropTypes } from 'prop-types';
 import css from './listStyles.css';
 
-function List() {
-// if there are markers on the map generate a list from markersState in Map.jsx
+function List({ restaurants, rows }) { // add props from app state.
+  // look up useMemo
+  console.log('rests', restaurants);
+  console.log('rows', rows);
+
   const data = useMemo(
     () => [
       {
@@ -97,3 +101,8 @@ function List() {
 }
 
 export default List;
+
+List.propTypes = {
+  restaurants: PropTypes.array,
+  rows: PropTypes.number
+};
