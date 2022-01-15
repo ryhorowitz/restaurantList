@@ -1,9 +1,24 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
+import React, {
+  useState, useEffect, useCallback, useRef, useMemo,
+} from 'react';
 import {
   GoogleMap, useLoadScript, Marker, InfoWindow,
 } from '@react-google-maps/api';
+import usePlacesAutocomplete, {
+  getGeocode,
+  getLatLng,
+} from 'use-places-autocomplete';
+import {
+  Combobox,
+  ComboboxInput,
+  ComboboxPopover,
+  ComboboxList,
+  ComboboxOption,
+} from '@reach/combobox';
+import { formatRelative } from 'date-fns';
 import mapStyles from './mapStyles';
+import SearchBox from './SearchBox.jsx';
 
 const libraries = ['places'];
 const mapContainerStyle = {
@@ -34,6 +49,7 @@ function Map({ restaurants, setRestaurants }) {
   });
 
   const [markers, setMarkers] = useState(restaurants);
+  const [selected, setSelected] = useState(null);
 
   useEffect(() => {
     setMarkers(restaurants);
@@ -59,13 +75,14 @@ function Map({ restaurants, setRestaurants }) {
 
   return (
     <div>
+      {/* <SearchBox /> */}
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={14}
         center={center}
         options={options}
         onClick={onMapClick}
-        // onLoad={onMapLoad}
+      // onLoad={onMapLoad}
       >
         {markers.map((marker) => (
           <Marker
@@ -74,9 +91,32 @@ function Map({ restaurants, setRestaurants }) {
               lat: marker.lat,
               lng: marker.lng,
             }}
+            onClick={() => {
+              setSelected(marker);
+            }}
             z-index={2}
           />
         ))}
+        {selected
+          && (
+            <InfoWindow
+              position={{ lat: selected.lat, lng: selected.lng }}
+              onCloseClick={() => {
+                setSelected(null);
+              }}
+            >
+              <div>
+                <h3>I want to go here!</h3>
+                <p>or...</p>
+                <button
+                  type="submit"
+                  onClick={() => {}}
+                >
+                  Remove From the List
+                </button>
+              </div>
+            </InfoWindow>
+          )}
       </GoogleMap>
     </div>
   );
@@ -84,6 +124,4 @@ function Map({ restaurants, setRestaurants }) {
 
 export default Map;
 
-
-
-//on map load add markers in state to the map.
+// on map load add markers in state to the map.

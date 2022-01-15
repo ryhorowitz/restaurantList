@@ -27,10 +27,6 @@ function App() {
     initList(setRestaurants);
   }, []);
 
-  // useEffect(() => {
-  //   (setRestaurants);
-  // }, []);
-
   return (
     <div className="container">
       <div className="columnContainer">
