@@ -12,8 +12,12 @@ import List from '../List/List.jsx';
 function initList(setRestaurants) {
   axios.get('http://localhost:3000/markers')
     .then((response) => {
-      // console.log('res data is \n', response.data);
-      setRestaurants(response.data);
+      console.log('res data is \n', response.data);
+      return response.data;
+    })
+    .then((data) => {
+      setRestaurants(data);
+
     })
     .catch((err) => {
       console.error('ERROR\n', err);

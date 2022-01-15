@@ -5,12 +5,12 @@ async function getMarkers(cb) {
     cb(docs);
 }
 
-async function removeMarker(marker, cb) {
-    // A.where().remove(filter, callback)
-    const docs = await Marker.remove({ lat: , lng, })
-        .then((res) => {
-            console.log(res);
-        })
-    cb(docs);
-}
-module.exports = { getMarkers, removeMarker };
+// async function removeMarker(marker, cb) {
+//     // A.where().remove(filter, callback)
+//     const docs = await Marker.remove({ lat, lng, })
+//         .then((res) => {
+//             console.log(res);
+//         })
+//     cb(docs);
+// }
+module.exports = { getMarkers };

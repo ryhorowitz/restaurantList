@@ -65,6 +65,12 @@ function Map({ restaurants, setRestaurants }) {
     ]);
   }, [setRestaurants]);
 
+  function handleRemove(id) {
+    console.log('handleRemove', id);
+    const newMarkers = markers.filter((marker) => marker.id !== id);
+    setMarkers(newMarkers);
+  }
+
   // const mapRef = useRef();
   // const onMapLoad = useCallback((map) => {
   //   mapRef.current = map;
@@ -86,7 +92,7 @@ function Map({ restaurants, setRestaurants }) {
       >
         {markers.map((marker) => (
           <Marker
-            key={marker.time}
+            key={marker.lat}
             position={{
               lat: marker.lat,
               lng: marker.lng,
@@ -100,6 +106,7 @@ function Map({ restaurants, setRestaurants }) {
         {selected
           && (
             <InfoWindow
+              key={selected.lat}
               position={{ lat: selected.lat, lng: selected.lng }}
               onCloseClick={() => {
                 setSelected(null);
@@ -110,7 +117,7 @@ function Map({ restaurants, setRestaurants }) {
                 <p>or...</p>
                 <button
                   type="submit"
-                  onClick={() => {}}
+                  onClick={handleRemove}
                 >
                   Remove From the List
                 </button>
@@ -124,4 +131,6 @@ function Map({ restaurants, setRestaurants }) {
 
 export default Map;
 
-// on map load add markers in state to the map.
+// remove selected marker
+//find marker with lat, lng that matches InfoWindow
+

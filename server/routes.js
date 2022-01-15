@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const express = require('express');
-const { getMarkers, removeMarker } = require('./controllers/marker');
+const { getMarkers } = require('./controllers/marker');
 
 const router = express.Router();
 
@@ -11,14 +11,14 @@ router.get('/markers', (req, res) => {
     });
 });
 
-router.delete('/markers', (req, res) => {
-    console.log('req.body', req.body);
-    // req.body should have... { lat, lng, timePlaced }
-    removeMarker(({ lat, lng, timePlaced }) => {
-        console.log('DOCS are \n', docs);
-        res.send(docs);
-    });
-});
+// router.delete('/markers', (req, res) => {
+//     console.log('req.body', req.body);
+//     // req.body should have... { lat, lng, timePlaced }
+//     removeMarker(({ lat, lng, timePlaced }) => {
+//         console.log('DOCS are \n', docs);
+//         res.send(docs);
+//     });
+// });
 
 module.exports = router;
 
